@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from waitress import serve 
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from werkzeug.utils import secure_filename
@@ -55,4 +56,4 @@ def home():
 
 # this will launch the Flask  app
 if __name__ == '__main__':
-    app.run(debug=True)
+    serve(app, host="0.0.0.0", port=5000)
