@@ -3,6 +3,8 @@ from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from werkzeug.utils import secure_filename
 import os
+from wtforms.validators import InputRequired
+
 
 # this creates the Flask app
 app = Flask(__name__)
@@ -19,7 +21,7 @@ app.config['UPLOAD_FOLDER'] = 'static/files'
 # 2. a SubmitField named 'Upload File'
 
 class UploadFileForm(FlaskForm):
-    file = FileField("File")
+    file = FileField("File", validators=[InputRequired()])
     submit = SubmitField("Upload File")
 
 
